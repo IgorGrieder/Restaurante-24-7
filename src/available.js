@@ -5,7 +5,7 @@ const menu = [
     category: 'breakfast',
     price: 15.99,
     img: './images/item-1.jpeg',
-    desc: 'I\'m baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed '
+    desc: 'Fluffy stacks of golden perfection, our buttermilk pancakes are a breakfast dream come true. Light and airy on the inside with a golden-brown crispiness on the edges, these pancakes are served with a generous drizzle of real maple syrup, making each bite a sweet symphony of flavors.'
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const menu = [
     category: 'lunch',
     price: 13.99,
     img: './images/item-2.jpeg',
-    desc: 'vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats '
+    desc: 'Double the indulgence, double the satisfaction. The Diner Double is a hearty combination of succulent beef patties, melted cheese, crisp lettuce, and juicy tomatoes, all layered between soft, toasted brioche buns. It`s a classic diner experience, elevated to perfection.'
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const menu = [
     category: 'shakes',
     price: 6.99,
     img: './images/item-3.jpeg',
-    desc: 'ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.'
+    desc: 'Brace yourself for the ultimate milkshake experience! The Godzilla Milkshake is an awe-inspiring blend of rich vanilla ice cream, swirls of chocolate syrup, and a mountain of whipped cream. Topped with colorful sprinkles and a cherry on top, this milkshake is a monster-sized treat for your taste buds.'
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const menu = [
     category: 'breakfast',
     price: 20.99,
     img: './images/item-4.jpeg',
-    desc: 'Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, '
+    desc: 'Take a trip to the countryside with our Country Delight. This dish features farm-fresh eggs, cooked to perfection and served alongside crispy hash browns, savory sausage links, and a medley of sautéed vegetables. It`s a hearty breakfast that feels like a warm embrace from the countryside.'
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const menu = [
     category: 'lunch',
     price: 22.99,
     img: './images/item-5.jpeg',
-    desc: 'franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90\'s pop-up '
+    desc: 'Get ready for a flavor explosion with our Egg Attack! This dish is a masterful combination of scrambled eggs, savory bacon, melted cheese, and a touch of zesty salsa, all encased in a warm tortilla. It`s a breakfast revolution that will leave your taste buds begging for more.'
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const menu = [
     category: 'shakes',
     price: 18.99,
     img: './images/item-6.jpeg',
-    desc: 'Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday'
+    desc: 'Indulge your sweet tooth with our Oreo Dream dessert. This heavenly creation features layers of velvety Oreo-flavored mousse, crumbled Oreo cookies, and a drizzle of chocolate ganache. It`s a dreamy, chocolatey delight that will transport you to dessert paradise.'
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const menu = [
     category: 'breakfast',
     price: 8.99,
     img: './images/item-7.jpeg',
-    desc: 'carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird '
+    desc: 'For the bacon enthusiasts, the Bacon Overflow is a carnivore`s dream come true.Crispy bacon strips piled high, creating a tower of smoky goodness.Served with a side of tangy barbecue sauce, this dish is a celebration of all things bacon.'
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const menu = [
     category: 'lunch',
     price: 12.99,
     img: './images/item-8.jpeg',
-    desc: 'on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  '
+    desc: 'Embrace the timeless flavors of the American Classic burger. Juicy beef patty, melted American cheese, fresh lettuce, tomato, and our special sauce, all sandwiched between a perfectly toasted sesame seed bun. It`s a true taste of the American culinary heritage.'
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const menu = [
     category: 'shakes',
     price: 16.99,
     img: './images/item-9.jpeg',
-    desc: 'skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.'
+    desc: 'When times get tough, the Quarantine Buddy is here to lift your spirits. This comforting bowl of creamy macaroni and cheese is studded with crispy bacon bits and a hint of garlic. It`s the ultimate comfort food that feels like a warm hug on a plate.'
   }
 ]
 
@@ -99,3 +99,6 @@ window.addEventListener("DOMContentLoaded", function () {
   sectionCenter.innerHTML = displayMenu;
 });
 */
+
+const names = menu.map((item) => item.title)
+console.log(names)
