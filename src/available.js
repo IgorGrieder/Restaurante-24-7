@@ -69,7 +69,7 @@ const menu = [
     category: 'shakes',
     price: 16.99,
     img: './images/item-9.jpeg',
-    desc: 'When times get tough, the Quarantine Buddy is here to lift your spirits. This comforting bowl of creamy macaroni and cheese is studded with crispy bacon bits and a hint of garlic. It`s the ultimate comfort food that feels like a warm hug on a plate.'
+    desc: 'Creamy macaroni and cheese with crispy bacon bits and a hint of garlic for the ultimate comfort food.'
   }
 ]
 
