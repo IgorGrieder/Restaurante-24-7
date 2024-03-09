@@ -9,7 +9,7 @@
   <body class="min-h-screen w-full">
     <!-- Models to use Area-->
     <div class="hidden">
-      <div class="flex items-center mb-6" id="model-cart-items">
+      <div class="mb-6 flex items-center" id="model-cart-items">
         <img src="/imgs/item-1.jpeg" class="w-14" />
         <h1 class="ml-3 text-xl">Buttermilk</h1>
         <div
@@ -36,25 +36,62 @@
     </header>
     <!-- Main Area -->
     <main class="mt-24 flex">
-      <section id="options" class="grid w-full grid-cols-2 gap-5">
+      <section id="options" class="grid h-full w-full grid-cols-2 gap-5">
         <h1
           class="col-span-2 text-center font-serif text-3xl font-extralight text-black"
         >
           Menu
         </h1>
+        <nav class="col-span-2 mx-auto w-full">
+          <ul class="flex flex-wrap justify-center gap-2">
+            <li
+              class="rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+            >
+              All
+            </li>
+            <li
+              class="rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+            >
+              Breakfast
+            </li>
+            <li
+              class="rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+            >
+              Lunch
+            </li>
+            <li
+              class="rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+            >
+              Shakes
+            </li>
+          </ul>
+        </nav>
       </section>
-      <!-- To show the cart on the mobile change to left-0-->
+      <!-- To show the cart on the mobile change to left-0, to hidde lef-full-->
       <!-- To show the cart on the above models cahnge sm:hidden to block-->
       <section
         id="cart-area"
-        class="absolute bottom-0 left-0 right-0 top-0 flex flex-col justify-center bg-black bg-opacity-75 px-8 sm:static sm:hidden sm:w-2/3"
+        class="absolute bottom-0 left-full right-0 top-0 z-10 flex flex-col justify-center bg-black bg-opacity-75 px-8 sm:static sm:block sm:w-3/4 sm:bg-transparent"
       >
         <!-- Cart Display -->
-        <section id="cart" class="rounded-3xl bg-white px-5 py-10">
-          <h1 class="mb-6 border-b-2 border-gray-400 text-center text-3xl">
+        <section id="cart" class="rounded-3xl bg-white px-5 py-10 md:pt-0">
+          <h1 class="mb-6 border-b-2 border-gray-400 pb-2 text-center text-3xl">
             Carrinho
           </h1>
-          <section id="items-cart"></section>
+          <section id="items-cart">
+            <div class="mb-6 flex items-center" id="model-cart-items">
+              <img src="/imgs/item-1.jpeg" class="w-14 lg:w-28" />
+              <h1 class="ml-3 text-xl">Buttermilk</h1>
+              <div
+                id="cart-control"
+                class="ml-auto flex gap-2 rounded-full border border-black px-3"
+              >
+                <button>-</button>
+                <span>0</span>
+                <button>+</button>
+              </div>
+            </div>
+          </section>
           <section id="price" class="mb-6 mt-3 flex flex-col gap-3">
             <div id="subtotal" class="text-xl font-light">
               Subtotal: USD<span></span>
@@ -66,7 +103,7 @@
               Total: USD<span></span>
             </div>
           </section>
-          <section id="cart-buttons" class="flex flex-col gap-3">
+          <section id="cart-buttons" class="flex flex-col gap-3 md:flex-row">
             <button
               class="mx-auto w-2/3 rounded-md border border-black bg-orange-400 px-3 py-1 font-light text-white hover:text-black"
             >
