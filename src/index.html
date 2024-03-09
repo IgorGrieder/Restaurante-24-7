@@ -9,7 +9,8 @@
   <body class="min-h-screen w-full">
     <!-- Models to use Area-->
     <div class="hidden">
-      <div class="mb-6 flex items-center" id="model-cart-items">
+      <!-- Cart item model-->
+      <div class="mb-6 flex items-center rounded-md" id="model-cart-items">
         <img src="/imgs/item-1.jpeg" class="w-14" />
         <h1 class="ml-3 text-xl">Buttermilk</h1>
         <div
@@ -21,14 +22,13 @@
           <button>+</button>
         </div>
       </div>
+
+      <!-- Menu item model -->
       <div
-        id="model-menu-items"
-        class="flex flex-col items-center gap-4 text-black lg:flex-row lg:items-start"
+        id="menu-model"
+        class="flex flex-col items-center gap-4 rounded-2xl text-black lg:flex-row lg:items-start"
       >
-        <img
-          src="/imgs/item-1.jpeg"
-          class="w-1/2 max-w-full lg:h-full lg:w-1/4"
-        />
+        <img src="/imgs/item-1.jpeg" class="w-1/2 max-w-full lg:w-1/4" />
         <div class="grid flex-1 grid-cols-1 gap-1">
           <div class="flex border-b border-gray-400 pb-2">
             <h1 class="border-r border-gray-400 pr-2 capitalize">
@@ -43,6 +43,7 @@
         </div>
       </div>
     </div>
+
     <!-- Header Area -->
     <header
       class="fixed left-0 right-0 top-0 flex items-center bg-orange-200 px-8 py-5 sm:px-12"
@@ -55,6 +56,7 @@
         <span>0</span>🛒
       </div>
     </header>
+
     <!-- Main Area -->
     <main class="mt-24 flex">
       <section id="options" class="grid h-full w-full grid-cols-1 gap-5">
@@ -64,38 +66,41 @@
         <nav class="mx-auto w-full">
           <ul class="flex flex-wrap justify-center gap-2">
             <li
-              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100 hover:shadow-sm hover:shadow-black"
             >
               All
             </li>
             <li
-              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100 hover:shadow-sm hover:shadow-black"
             >
               Breakfast
             </li>
             <li
-              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100 hover:shadow-sm hover:shadow-black"
             >
               Lunch
             </li>
             <li
-              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100"
+              class="cursor-pointer rounded-md border border-black bg-orange-200 px-3 py-1 text-white shadow-sm shadow-orange-100 hover:shadow-sm hover:shadow-black"
             >
               Shakes
             </li>
           </ul>
         </nav>
+
         <!-- Section to showcase the menu options -->
         <section
           id="options-showcase"
           class="mt-5 grid grid-cols-1 gap-5 px-4 md:grid-cols-2 md:gap-10 md:px-10"
         ></section>
       </section>
+
+      <!-- Cart Area -->
       <!-- To show the cart on the mobile change to hidden to flex-->
       <!-- To show the cart on the above models cahnge sm:hidden to block-->
       <section
         id="cart-area"
-        class="fixed bottom-0 left-0 right-0 top-0 hidden h-screen flex-col justify-center bg-black bg-opacity-75 px-8 sm:static sm:hidden sm:w-2/3 sm:bg-transparent"
+        class="fixed bottom-0 left-0 right-0 top-0 hidden h-screen flex-col justify-center bg-black bg-opacity-75 px-8 sm:static sm:hidden sm:w-2/5 sm:bg-transparent"
       >
         <!-- Cart Display -->
         <section id="cart" class="rounded-3xl bg-white px-5 py-10 md:pt-0">
@@ -114,19 +119,66 @@
               Total: USD<span></span>
             </div>
           </section>
-          <section id="cart-buttons" class="flex flex-col gap-3 md:flex-row">
+          <div id="cart-buttons" class="flex flex-col gap-3 md:flex-row">
             <button
               class="mx-auto w-2/3 rounded-md border border-black bg-orange-400 px-3 py-1 font-light text-white hover:text-black"
             >
-              Add to Cart
+              Pay
             </button>
             <button
               class="mx-auto w-2/3 rounded-md border border-black px-3 py-1 font-light text-black"
             >
               Cancel
             </button>
-          </section>
+          </div>
         </section>
+      </section>
+
+      <!-- Modal Area -->
+      <section
+        id="modal-area"
+        class="fixed bottom-0 left-0 right-0 top-0 flex h-screen flex-col justify-center bg-black bg-opacity-75 px-8"
+      >
+        <div
+          id="moda-display"
+          class="flex flex-col rounded-3xl bg-white px-5 py-10"
+        >
+          <img src="/imgs/item-1.jpeg" class="rounded-2xl md:w-1/3" />
+          <div id="info-modal" class="mt-5 flex flex-col gap-2">
+            <h1
+              class="border-b border-gray-400 pb-2 text-center text-3xl font-extrabold uppercase"
+            >
+              buttermilk pancakes
+            </h1>
+            <p>
+              Fluffy stacks of golden perfection, served with a generous drizzle
+              of real maple syrup.
+            </p>
+            <h2 class="font-bold">
+              Price USD <span class="font-normal">19.90</span>
+            </h2>
+            <div
+              id="modal-control"
+              class="mx-auto flex justify-center gap-2 rounded-full border border-black px-3"
+            >
+              <button>-</button>
+              <span>0</span>
+              <button>+</button>
+            </div>
+            <div id="cart-buttons" class="flex flex-col gap-3 md:flex-row">
+              <button
+                class="mx-auto w-2/3 rounded-md border border-black bg-orange-400 px-3 py-1 font-light text-white hover:text-black"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="mx-auto w-2/3 rounded-md border border-black px-3 py-1 font-light text-black"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer></footer>
