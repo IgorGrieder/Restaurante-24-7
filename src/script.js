@@ -1,7 +1,27 @@
 // Initial Data
 const menuDisplay = document.querySelector('#options-showcase')
+const cartBox = document.getElementById('cart-box')
+const cartArea = document.getElementById('cart-area')
 startPage()
 // Evets ---------------------------------------
+
+// Open the cart
+cartBox.addEventListener('click', () => {
+  // First verify the size of the screen ----- above 640px block and below flex
+  if (window.innerWidth > 640) {
+    // Close the cart if you click on it again
+    if (cartArea.classList.contains('sm:block')) {
+      cartArea.classList.remove('sm:block')
+      cartArea.classList.add('sm:hidden')
+    } else {
+      cartArea.classList.remove('sm:hidden')
+      cartArea.classList.add('sm:block')
+    }
+  } else {
+    cartArea.classList.remove('hidden')
+    cartArea.classList.add('flex')
+  }
+})
 
 // Functions -----------------------------------
 

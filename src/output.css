@@ -605,6 +605,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.block{
+  display: block;
+}
+
 .inline-block{
   display: inline-block;
 }
@@ -946,6 +950,10 @@ video {
     position: static;
   }
 
+  .sm\:block{
+    display: block;
+  }
+
   .sm\:hidden{
     display: none;
   }
@@ -1009,16 +1017,12 @@ video {
     justify-content: center;
   }
 
-  .lg\:gap-20{
-    gap: 5rem;
-  }
-
-  .lg\:gap-10{
-    gap: 2.5rem;
-  }
-
   .lg\:gap-16{
     gap: 4rem;
+  }
+
+  .lg\:gap-20{
+    gap: 5rem;
   }
 
   .lg\:px-40{
