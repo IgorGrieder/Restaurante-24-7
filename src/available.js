@@ -4,7 +4,7 @@ const menu = [
     title: 'buttermilk pancakes',
     category: 'breakfast',
     price: 15.99,
-    img: './images/item-1.jpeg',
+    img: '/images/item-1.jpeg',
     desc: 'Fluffy stacks of golden perfection, served with a generous drizzle of real maple syrup.'
   },
   {
@@ -12,7 +12,7 @@ const menu = [
     title: 'diner double',
     category: 'lunch',
     price: 13.99,
-    img: './images/item-2.jpeg',
+    img: '/images/item-2.jpeg',
     desc: 'A hearty combination of succulent beef patties, melted cheese, and crisp lettuce, sandwiched between toasted brioche buns.'
   },
   {
@@ -20,7 +20,7 @@ const menu = [
     title: 'godzilla milkshake',
     category: 'shakes',
     price: 6.99,
-    img: './images/item-3.jpeg',
+    img: '/images/item-3.jpeg',
     desc: 'A monster-sized milkshake featuring rich vanilla ice cream, chocolate syrup, whipped cream, and colorful sprinkles.'
   },
   {
@@ -28,7 +28,7 @@ const menu = [
     title: 'country delight',
     category: 'breakfast',
     price: 20.99,
-    img: './images/item-4.jpeg',
+    img: '/images/item-4.jpeg',
     desc: 'Farm-fresh eggs, crispy hash browns, savory sausage links, and sautéed vegetables for a hearty breakfast.'
   },
   {
@@ -36,7 +36,7 @@ const menu = [
     title: 'egg attack',
     category: 'lunch',
     price: 22.99,
-    img: './images/item-5.jpeg',
+    img: '/images/item-5.jpeg',
     desc: 'Scrambled eggs, savory bacon, melted cheese, and zesty salsa wrapped in a warm tortilla.'
   },
   {
@@ -44,7 +44,7 @@ const menu = [
     title: 'oreo dream',
     category: 'shakes',
     price: 18.99,
-    img: './images/item-6.jpeg',
+    img: '/images/item-6.jpeg',
     desc: 'Layers of velvety Oreo-flavored mousse, crumbled cookies, and chocolate ganache for a dreamy dessert.'
   },
   {
@@ -52,7 +52,7 @@ const menu = [
     title: 'bacon overflow',
     category: 'breakfast',
     price: 8.99,
-    img: './images/item-7.jpeg',
+    img: '/images/item-7.jpeg',
     desc: 'A tower of crispy bacon strips served with a side of tangy barbecue sauce.'
   },
   {
@@ -60,7 +60,7 @@ const menu = [
     title: 'american classic',
     category: 'lunch',
     price: 12.99,
-    img: './images/item-8.jpeg',
+    img: '/images/item-8.jpeg',
     desc: 'Juicy beef patty, melted American cheese, fresh lettuce, tomato, and special sauce on a toasted sesame seed bun.'
   },
   {
@@ -68,37 +68,7 @@ const menu = [
     title: 'quarantine buddy',
     category: 'shakes',
     price: 16.99,
-    img: './images/item-9.jpeg',
+    img: '/images/item-9.jpeg',
     desc: 'Creamy macaroni and cheese with crispy bacon bits and a hint of garlic for the ultimate comfort food.'
   }
 ]
-
-/*
-const sectionCenter = document.querySelector(".section-center");
-
-window.addEventListener("DOMContentLoaded", function () {
-  let displayMenu = menu.map(function (item) {
-    // console.log(item);
-
-    return `<article class="menu-item">
-          <img src=${item.img} alt=${item.title} class="photo" />
-          <div class="item-info">
-            <header>
-              <h4>${item.title}</h4>
-              <h4 class="price">$${item.price}</h4>
-            </header>
-            <p class="item-text">
-              ${item.desc}
-            </p>
-          </div>
-        </article>`;
-  });
-  displayMenu = displayMenu.join("");
-  console.log(displayMenu);
-
-  sectionCenter.innerHTML = displayMenu;
-});
-*/
-
-const names = menu.map((item) => item.title)
-console.log(names)
