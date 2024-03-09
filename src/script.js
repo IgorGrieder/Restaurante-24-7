@@ -2,12 +2,14 @@
 const menuDisplay = document.querySelector('#options-showcase')
 const cartBox = document.getElementById('cart-box')
 const cartArea = document.getElementById('cart-area')
+const cancelCart = document.getElementById('cancel-cart')
 startPage()
 // Evets ---------------------------------------
 
 // Open the cart
 cartBox.addEventListener('click', () => {
   // First verify the size of the screen ----- above 640px block and below flex
+  // TO DO: update cart every time its oppened
   if (window.innerWidth > 640) {
     // Close the cart if you click on it again
     if (cartArea.classList.contains('sm:block')) {
@@ -20,6 +22,18 @@ cartBox.addEventListener('click', () => {
   } else {
     cartArea.classList.remove('hidden')
     cartArea.classList.add('flex')
+  }
+})
+
+// Close cart
+cancelCart.addEventListener('click', () => {
+  // First verify the size of the screen ----- above 640px block and below flex
+  if (window.innerWidth > 640) {
+    cartArea.classList.remove('sm:block')
+    cartArea.classList.add('sm:hidden')
+  } else {
+    cartArea.classList.add('hidden')
+    cartArea.classList.remove('flex')
   }
 })
 
