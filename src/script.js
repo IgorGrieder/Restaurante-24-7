@@ -5,6 +5,9 @@ const cartArea = document.getElementById('cart-area')
 const cancelCart = document.getElementById('cancel-cart')
 const modal = document.getElementById('modal-area')
 const cancelModal = document.getElementById('cancel-modal')
+const quantityModal = document.getElementById('modal-quantity')
+const quantityPlusModal = document.getElementById('plus-modal')
+const quantityMinusModal = document.getElementById('minus-modal')
 startPage()
 
 // Variables to control information about the user interaction
@@ -54,7 +57,7 @@ document.querySelectorAll('#menu-model').forEach((item) => {
     // Make the changes in the modal area in accord to the fake json file
     modalCount = 1
     modalCurrent = index
-    modal.querySelector('#modal-control span').innerHTML = modalCount
+    modal.querySelector('#modal-quantity span').innerHTML = modalCount
     modal.querySelector('img').src = menu[index].img
     modal.querySelector('#modal-title').innerHTML = menu[index].title
     modal.querySelector('#modal-desc').innerHTML = menu[index].desc
@@ -68,6 +71,21 @@ document.querySelectorAll('#menu-model').forEach((item) => {
 // Close modal button event
 cancelModal.addEventListener('click', () => closeModal())
 
+// Modal quantity plus event
+quantityPlusModal.addEventListener('click', () => {
+  // Increase the modal quantity and show on the button area
+  modalCount++
+  quantityModal.querySelector('span').innerHTML = modalCount
+})
+
+// Modal quantity minus event
+quantityMinusModal.addEventListener('click', () => {
+  // Check if the number is going to be less than zero
+  if (modalCount > 1) {
+    modalCount--
+    quantityModal.querySelector('span').innerHTML = modalCount
+  }
+})
 // Functions -----------------------------------
 
 // Function to start the page
