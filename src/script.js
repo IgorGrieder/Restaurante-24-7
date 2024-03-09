@@ -3,7 +3,15 @@ const menuDisplay = document.querySelector('#options-showcase')
 const cartBox = document.getElementById('cart-box')
 const cartArea = document.getElementById('cart-area')
 const cancelCart = document.getElementById('cancel-cart')
+const modal = document.getElementById('modal-area')
+const cancelModal = document.getElementById('cancel-modal')
 startPage()
+
+// Variables to control information about the user interaction
+const cartItems = []
+let modalCurrent = null
+let modalCount = 1
+
 // Evets ---------------------------------------
 
 // Open the cart
@@ -37,6 +45,29 @@ cancelCart.addEventListener('click', () => {
   }
 })
 
+// Open modal event
+document.querySelectorAll('#menu-model').forEach((item) => {
+  item.addEventListener('click', () => {
+    // Get the id to identify the item in the fake json file
+    const index = item.getAttribute('data-id')
+
+    // Make the changes in the modal area in accord to the fake json file
+    modalCount = 1
+    modalCurrent = index
+    modal.querySelector('#modal-control span').innerHTML = modalCount
+    modal.querySelector('img').src = menu[index].img
+    modal.querySelector('#modal-title').innerHTML = menu[index].title
+    modal.querySelector('#modal-desc').innerHTML = menu[index].desc
+    modal.querySelector('h2 span').innerHTML = menu[index].price
+
+    // After changes where made open the modal area
+    openModal()
+  })
+})
+
+// Close modal button event
+cancelModal.addEventListener('click', () => closeModal())
+
 // Functions -----------------------------------
 
 // Function to start the page
@@ -45,10 +76,8 @@ function startPage () {
     // clone the model and configure it as it gets info of a fake API -> available.js
     const newItem = document.getElementById('menu-model').cloneNode(true)
 
-    // Making a reload animation
-    newItem.classList.add('animate-pulse')
-
     // Setting the item for the html
+    newItem.setAttribute('data-id', item.id)
     newItem.querySelector('img').src = item.img
     newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('h2 span').innerHTML = item.price
@@ -61,17 +90,16 @@ function startPage () {
   // Joins the array and adds it to the menuDisplay
   const display = menuInnerHTML.join('')
   menuDisplay.innerHTML = display
-
-  // Ending the animation after it finishes -> 2 secs
-  finishAnimation()
 }
 
-// Function to finish the reload animation
-function finishAnimation () {
-  // Iterates and removes the animation class
-  menuDisplay.querySelectorAll('#menu-model').forEach((item) => {
-    setTimeout(() => {
-      item.classList.remove('animate-pulse')
-    }, 2000)
-  })
+// Function to close the modal
+function closeModal () {
+  modal.classList.remove('flex')
+  modal.classList.add('hidden')
+}
+
+// Function to open the modal
+function openModal () {
+  modal.classList.add('flex')
+  modal.classList.remove('hidden')
 }
