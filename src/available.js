@@ -5,7 +5,7 @@ const menu = [
     category: 'breakfast',
     price: 15.99,
     img: './images/item-1.jpeg',
-    desc: 'Fluffy stacks of golden perfection, our buttermilk pancakes are a breakfast dream come true. Light and airy on the inside with a golden-brown crispiness on the edges, these pancakes are served with a generous drizzle of real maple syrup, making each bite a sweet symphony of flavors.'
+    desc: 'Fluffy stacks of golden perfection, served with a generous drizzle of real maple syrup.'
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const menu = [
     category: 'lunch',
     price: 13.99,
     img: './images/item-2.jpeg',
-    desc: 'Double the indulgence, double the satisfaction. The Diner Double is a hearty combination of succulent beef patties, melted cheese, crisp lettuce, and juicy tomatoes, all layered between soft, toasted brioche buns. It`s a classic diner experience, elevated to perfection.'
+    desc: 'A hearty combination of succulent beef patties, melted cheese, and crisp lettuce, sandwiched between toasted brioche buns.'
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const menu = [
     category: 'shakes',
     price: 6.99,
     img: './images/item-3.jpeg',
-    desc: 'Brace yourself for the ultimate milkshake experience! The Godzilla Milkshake is an awe-inspiring blend of rich vanilla ice cream, swirls of chocolate syrup, and a mountain of whipped cream. Topped with colorful sprinkles and a cherry on top, this milkshake is a monster-sized treat for your taste buds.'
+    desc: 'A monster-sized milkshake featuring rich vanilla ice cream, chocolate syrup, whipped cream, and colorful sprinkles.'
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const menu = [
     category: 'breakfast',
     price: 20.99,
     img: './images/item-4.jpeg',
-    desc: 'Take a trip to the countryside with our Country Delight. This dish features farm-fresh eggs, cooked to perfection and served alongside crispy hash browns, savory sausage links, and a medley of sautéed vegetables. It`s a hearty breakfast that feels like a warm embrace from the countryside.'
+    desc: 'Farm-fresh eggs, crispy hash browns, savory sausage links, and sautéed vegetables for a hearty breakfast.'
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const menu = [
     category: 'lunch',
     price: 22.99,
     img: './images/item-5.jpeg',
-    desc: 'Get ready for a flavor explosion with our Egg Attack! This dish is a masterful combination of scrambled eggs, savory bacon, melted cheese, and a touch of zesty salsa, all encased in a warm tortilla. It`s a breakfast revolution that will leave your taste buds begging for more.'
+    desc: 'Scrambled eggs, savory bacon, melted cheese, and zesty salsa wrapped in a warm tortilla.'
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const menu = [
     category: 'shakes',
     price: 18.99,
     img: './images/item-6.jpeg',
-    desc: 'Indulge your sweet tooth with our Oreo Dream dessert. This heavenly creation features layers of velvety Oreo-flavored mousse, crumbled Oreo cookies, and a drizzle of chocolate ganache. It`s a dreamy, chocolatey delight that will transport you to dessert paradise.'
+    desc: 'Layers of velvety Oreo-flavored mousse, crumbled cookies, and chocolate ganache for a dreamy dessert.'
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const menu = [
     category: 'breakfast',
     price: 8.99,
     img: './images/item-7.jpeg',
-    desc: 'For the bacon enthusiasts, the Bacon Overflow is a carnivore`s dream come true.Crispy bacon strips piled high, creating a tower of smoky goodness.Served with a side of tangy barbecue sauce, this dish is a celebration of all things bacon.'
+    desc: 'A tower of crispy bacon strips served with a side of tangy barbecue sauce.'
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const menu = [
     category: 'lunch',
     price: 12.99,
     img: './images/item-8.jpeg',
-    desc: 'Embrace the timeless flavors of the American Classic burger. Juicy beef patty, melted American cheese, fresh lettuce, tomato, and our special sauce, all sandwiched between a perfectly toasted sesame seed bun. It`s a true taste of the American culinary heritage.'
+    desc: 'Juicy beef patty, melted American cheese, fresh lettuce, tomato, and special sauce on a toasted sesame seed bun.'
   },
   {
     id: 9,
