@@ -44,7 +44,7 @@
     <!-- Models to use Area-->
     <div class="hidden">
       <!-- Cart item model-->
-      <div class="mb-6 flex items-center rounded-md" id="model-cart-items">
+      <div class="mb-6 flex items-center rounded-md" id="model-cart-items" data-id="">
         <img src="" class="w-14" />
         <h1 class="ml-3 text-xl"></h1>
         <div
@@ -185,7 +185,7 @@
       <!-- To display change hidden to flex-->
       <section
         id="modal-area"
-        class="fixed bottom-0 left-0 right-0 top-0 hidden h-screen flex-col justify-center bg-black bg-opacity-75 px-8 lg:px-40"
+        class="fixed bottom-0 left-0 right-0 top-0 hidden h-screen flex-col justify-center bg-black bg-opacity-75 px-8 lg:px-40 transition-all ease-linear"
       >
         <div
           id="moda-display"
@@ -235,6 +235,7 @@
               class="flex flex-col gap-3 md:mt-auto md:flex-row"
             >
               <button
+                id="add-cart-modal"
                 class="mx-auto w-2/3 rounded-md border border-black bg-orange-400 px-3 py-1 font-light text-white hover:text-black"
               >
                 Add to Cart

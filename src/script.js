@@ -2,25 +2,28 @@
 const menuDisplay = document.querySelector('#options-showcase')
 const cartBox = document.getElementById('cart-box')
 const cartArea = document.getElementById('cart-area')
+const cartDisplay = document.getElementById('items-cart')
 const cancelCart = document.getElementById('cancel-cart')
 const modal = document.getElementById('modal-area')
 const cancelModal = document.getElementById('cancel-modal')
 const quantityModal = document.getElementById('modal-quantity')
 const quantityPlusModal = document.getElementById('plus-modal')
 const quantityMinusModal = document.getElementById('minus-modal')
+const addCartModal = document.getElementById('add-cart-modal')
 startPage()
 
 // Variables to control information about the user interaction
 const cartItems = []
 let modalCurrent = null
 let modalCount = 1
+let cartPrice = 0
 
 // Evets ---------------------------------------
 
-// Open the cart
+// Open the cart on the top button
 cartBox.addEventListener('click', () => {
   // First verify the size of the screen ----- above 640px block and below flex
-  // TO DO: update cart every time its oppened
+  updateCart()
   if (window.innerWidth > 640) {
     // Close the cart if you click on it again
     if (cartArea.classList.contains('sm:block')) {
@@ -86,6 +89,31 @@ quantityMinusModal.addEventListener('click', () => {
     quantityModal.querySelector('span').innerHTML = modalCount
   }
 })
+
+// Add to cart procedure
+addCartModal.addEventListener('click', () => {
+  // Checking if the item is already in the cart
+  if (cartItems.find((item) => item.id === menu[modalCurrent].id) !== undefined) {
+    // Gets the index of the item and add the quantity
+    const index = cartItems.findIndex((item) => item.id === menu[modalCurrent].id)
+    cartItems[index].quantity = parseInt(cartItems[index].quantity) + modalCount
+  } else {
+    // Capturing information about the bought item
+    const newItem = {
+      id: menu[modalCurrent].id,
+      title: menu[modalCurrent].title,
+      img: menu[modalCurrent].img,
+      price: menu[modalCurrent].price,
+      quantity: modalCount
+    }
+
+    cartItems.push(newItem)
+  }
+
+  // Adding/Openning the cart and closing the modal
+  closeModal()
+  openCart()
+})
 // Functions -----------------------------------
 
 // Function to start the page
@@ -96,6 +124,7 @@ function startPage () {
 
     // Setting the item for the html
     newItem.setAttribute('data-id', item.id)
+    newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('img').src = item.img
     newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('h2 span').innerHTML = item.price
@@ -112,6 +141,7 @@ function startPage () {
 
 // Function to close the modal
 function closeModal () {
+  modal.classList.remove('opacity-1')
   modal.classList.remove('flex')
   modal.classList.add('hidden')
 }
@@ -120,4 +150,52 @@ function closeModal () {
 function openModal () {
   modal.classList.add('flex')
   modal.classList.remove('hidden')
+  modal.classList.add('opacity-0')
+  setTimeout(() => {
+    modal.classList.remove('opacity-0')
+    modal.classList.add('opacity-1')
+  }, 200)
+}
+
+// Function to open the cart
+function openCart () {
+  updateCart()
+  // Check whats the size of teh screen to procedure
+  if (window.innerWidth > 640) {
+    cartArea.classList.remove('sm:hidden')
+    cartArea.classList.add('sm:block')
+  } else {
+    cartArea.classList.remove('hidden')
+    cartArea.classList.add('flex')
+  }
+}
+
+// Function to load the cart with the current items
+function updateCart () {
+  // Deleting the current information and adding the new one
+  cartDisplay.innerHTML = ''
+  cartPrice = 0
+
+  const cartInnerHTML = cartItems.map((item) => {
+    // clone the model and configure it as it gets info of a fake API -> available.js
+    const newItem = document.getElementById('model-cart-items').cloneNode(true)
+
+    // Setting the item for the html
+    newItem.setAttribute('data-id', item.id)
+    newItem.querySelector('h1').innerHTML = item.title
+    newItem.querySelector('img').src = item.img
+    newItem.querySelector('#cart-control span').innerHTML = item.quantity
+    cartPrice += (item.quantity * item.price)
+
+    // Adding events to control the quantity/price of the cart items
+    // TO DO
+    // returns the entire html of the element, including the div itself that has all the elements in it
+    return newItem.outerHTML
+  })
+
+  // Joins the array and adds it to the menuDisplay
+  const display = cartInnerHTML.join('')
+  cartDisplay.innerHTML = display
+
+  cartArea.querySelector('#subtotal span').innerHTML = cartPrice
 }
