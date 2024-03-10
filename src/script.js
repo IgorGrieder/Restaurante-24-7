@@ -65,26 +65,6 @@ cancelCart.addEventListener('click', () => {
   }
 })
 
-// Open modal event ----------------------
-document.querySelectorAll('#menu-model').forEach((item) => {
-  item.addEventListener('click', () => {
-    // Get the id to identify the item in the fake json file
-    const index = item.getAttribute('data-id')
-
-    // Make the changes in the modal area in accord to the fake json file
-    modalCount = 1
-    modalCurrent = index
-    modal.querySelector('#modal-quantity span').innerHTML = modalCount
-    modal.querySelector('img').src = menu[index].img
-    modal.querySelector('#modal-title').innerHTML = menu[index].title
-    modal.querySelector('#modal-desc').innerHTML = menu[index].desc
-    modal.querySelector('h2 span').innerHTML = menu[index].price
-
-    // After changes where made open the modal area
-    openModal()
-  })
-})
-
 // Close modal button event ----------------------
 cancelModal.addEventListener('click', () => closeModal())
 
@@ -169,6 +149,26 @@ function startPage () {
   // Joins the array and adds it to the menuDisplay
   const display = menuInnerHTML.join('')
   menuDisplay.innerHTML = display
+
+  // Open modal event ----------------------
+  document.querySelectorAll('#menu-model').forEach((item) => {
+    item.addEventListener('click', () => {
+      // Get the id to identify the item in the fake json file
+      const index = item.getAttribute('data-id')
+
+      // Make the changes in the modal area in accord to the fake json file
+      modalCount = 1
+      modalCurrent = index
+      modal.querySelector('#modal-quantity span').innerHTML = modalCount
+      modal.querySelector('img').src = menu[index].img
+      modal.querySelector('#modal-title').innerHTML = menu[index].title
+      modal.querySelector('#modal-desc').innerHTML = menu[index].desc
+      modal.querySelector('h2 span').innerHTML = menu[index].price
+
+      // After changes where made open the modal area
+      openModal()
+    })
+  })
 }
 
 // Function to close the modal ----------------------
@@ -248,6 +248,7 @@ function updateCart () {
   // Price changes
   cartPriceDiscount = (cartPriceSubtotal * 0.1).toFixed(2)
   cartPriceTotal = (cartPriceSubtotal - cartPriceDiscount).toFixed(2)
+  cartPriceSubtotal = cartPriceSubtotal.toFixed(2)
   cartArea.querySelector('#subtotal span').innerHTML = cartPriceSubtotal
   cartArea.querySelector('#total span').innerHTML = cartPriceTotal
   cartArea.querySelector('#discount span').innerHTML = cartPriceDiscount
@@ -285,5 +286,25 @@ function show (str) {
     // Joins the array and adds it to the menuDisplay
     const display = menuInnerHTML.join('')
     menuDisplay.innerHTML = display
+
+    // Open modal event
+    document.querySelectorAll('#menu-model').forEach((item) => {
+      item.addEventListener('click', () => {
+        // Get the id to identify the item in the fake json file
+        const index = item.getAttribute('data-id')
+
+        // Make the changes in the modal area in accord to the fake json file
+        modalCount = 1
+        modalCurrent = index
+        modal.querySelector('#modal-quantity span').innerHTML = modalCount
+        modal.querySelector('img').src = menu[index].img
+        modal.querySelector('#modal-title').innerHTML = menu[index].title
+        modal.querySelector('#modal-desc').innerHTML = menu[index].desc
+        modal.querySelector('h2 span').innerHTML = menu[index].price
+
+        // After changes where made open the modal area
+        openModal()
+      })
+    })
   }
 }

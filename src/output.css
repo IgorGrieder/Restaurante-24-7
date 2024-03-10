@@ -566,6 +566,10 @@ video {
   top: 0px;
 }
 
+.z-10{
+  z-index: 10;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -639,6 +643,14 @@ video {
 
 .h-screen{
   height: 100vh;
+}
+
+.max-h-\[500px\]{
+  max-height: 500px;
+}
+
+.max-h-60{
+  max-height: 15rem;
 }
 
 .min-h-screen{
@@ -943,6 +955,18 @@ video {
   transition-timing-function: linear;
 }
 
+.hover\:relative:hover{
+  position: relative;
+}
+
+.hover\:z-0:hover{
+  z-index: 0;
+}
+
+.hover\:-z-10:hover{
+  z-index: -10;
+}
+
 .hover\:scale-105:hover{
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -1035,6 +1059,10 @@ video {
 
   .lg\:items-start{
     align-items: flex-start;
+  }
+
+  .lg\:justify-start{
+    justify-content: flex-start;
   }
 
   .lg\:justify-center{
