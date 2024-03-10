@@ -17,6 +17,7 @@ const cartItems = []
 let modalCurrent = null
 let modalCount = 1
 let cartPrice = 0
+let cartCount = 0
 
 // Evets ---------------------------------------
 
@@ -110,6 +111,9 @@ addCartModal.addEventListener('click', () => {
     cartItems.push(newItem)
   }
 
+  // Changing the cart icon on the top
+  updateCartCount()
+
   // Adding/Openning the cart and closing the modal
   closeModal()
   openCart()
@@ -176,7 +180,7 @@ function updateCart () {
   cartDisplay.innerHTML = ''
   cartPrice = 0
 
-  const cartInnerHTML = cartItems.map((item) => {
+  cartItems.forEach((item, index) => {
     // clone the model and configure it as it gets info of a fake API -> available.js
     const newItem = document.getElementById('model-cart-items').cloneNode(true)
 
@@ -184,18 +188,37 @@ function updateCart () {
     newItem.setAttribute('data-id', item.id)
     newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('img').src = item.img
-    newItem.querySelector('#cart-control span').innerHTML = item.quantity
+    newItem.querySelector('div span').innerHTML = item.quantity
     cartPrice += (item.quantity * item.price)
 
     // Adding events to control the quantity/price of the cart items
-    // TO DO
-    // returns the entire html of the element, including the div itself that has all the elements in it
-    return newItem.outerHTML
+    newItem.querySelector('.cart-control .plus-cart').addEventListener('click', () => {
+      // Increase the quantity and reload the page
+      item.quantity = parseInt(item.quantity) + 1
+      cartCount++
+      cartBox.querySelector('span').innerHTML = cartCount
+      updateCart()
+    })
+
+    newItem.querySelector('.cart-control .minus-cart').addEventListener('click', () => {
+      // Check if its going to delete the item from the cartItems
+      if (parseInt(item.quantity) === 1) {
+        cartItems.splice(index, 1)
+      } else {
+        item.quantity = parseInt(item.quantity) - 1
+        cartCount--
+        cartBox.querySelector('span').innerHTML = cartCount
+      }
+      updateCart()
+    })
+    // Adding each item to the cart properly
+    cartDisplay.append(newItem)
   })
-
-  // Joins the array and adds it to the menuDisplay
-  const display = cartInnerHTML.join('')
-  cartDisplay.innerHTML = display
-
   cartArea.querySelector('#subtotal span').innerHTML = cartPrice
+}
+
+// Function to update the cart logo
+function updateCartCount () {
+  cartCount = parseInt(cartCount) + parseInt(modalCount)
+  cartBox.querySelector('span').innerHTML = cartCount
 }
