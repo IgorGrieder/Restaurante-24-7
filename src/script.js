@@ -16,8 +16,10 @@ startPage()
 const cartItems = []
 let modalCurrent = null
 let modalCount = 1
-let cartPrice = 0
 let cartCount = 0
+let cartPriceTotal = 0
+let cartPriceDiscount = 0
+let cartPriceSubtotal = 0
 
 // Evets ---------------------------------------
 
@@ -37,6 +39,13 @@ cartBox.addEventListener('click', () => {
   } else {
     cartArea.classList.remove('hidden')
     cartArea.classList.add('flex')
+
+    // Adding a animation for the mobile oppening
+    cartArea.classList.add('opacity-0')
+    setTimeout(() => {
+      cartArea.classList.remove('opacity-0')
+      cartArea.classList.add('opacity-1')
+    }, 500)
   }
 })
 
@@ -178,7 +187,9 @@ function openCart () {
 function updateCart () {
   // Deleting the current information and adding the new one
   cartDisplay.innerHTML = ''
-  cartPrice = 0
+  cartPriceTotal = 0
+  cartPriceDiscount = 0
+  cartPriceSubtotal = 0
 
   cartItems.forEach((item, index) => {
     // clone the model and configure it as it gets info of a fake API -> available.js
@@ -189,7 +200,7 @@ function updateCart () {
     newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('img').src = item.img
     newItem.querySelector('div span').innerHTML = item.quantity
-    cartPrice += (item.quantity * item.price)
+    cartPriceSubtotal += (item.quantity * item.price)
 
     // Adding events to control the quantity/price of the cart items
     newItem.querySelector('.cart-control .plus-cart').addEventListener('click', () => {
@@ -206,15 +217,21 @@ function updateCart () {
         cartItems.splice(index, 1)
       } else {
         item.quantity = parseInt(item.quantity) - 1
-        cartCount--
-        cartBox.querySelector('span').innerHTML = cartCount
       }
+      cartCount--
+      cartBox.querySelector('span').innerHTML = cartCount
       updateCart()
     })
     // Adding each item to the cart properly
     cartDisplay.append(newItem)
   })
-  cartArea.querySelector('#subtotal span').innerHTML = cartPrice
+
+  // Price changes
+  cartPriceDiscount = (cartPriceSubtotal * 0.1).toFixed(2)
+  cartPriceTotal = (cartPriceSubtotal - cartPriceDiscount).toFixed(2)
+  cartArea.querySelector('#subtotal span').innerHTML = cartPriceSubtotal
+  cartArea.querySelector('#total span').innerHTML = cartPriceTotal
+  cartArea.querySelector('#discount span').innerHTML = cartPriceDiscount
 }
 
 // Function to update the cart logo
