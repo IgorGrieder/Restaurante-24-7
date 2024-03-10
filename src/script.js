@@ -10,6 +10,10 @@ const quantityModal = document.getElementById('modal-quantity')
 const quantityPlusModal = document.getElementById('plus-modal')
 const quantityMinusModal = document.getElementById('minus-modal')
 const addCartModal = document.getElementById('add-cart-modal')
+const all = document.getElementById('all')
+const lunch = document.getElementById('lunch')
+const breakfast = document.getElementById('breakfast')
+const shakes = document.getElementById('shakes')
 startPage()
 
 // Variables to control information about the user interaction
@@ -21,9 +25,9 @@ let cartPriceTotal = 0
 let cartPriceDiscount = 0
 let cartPriceSubtotal = 0
 
-// Evets ---------------------------------------
+// Evets ----------------------------------------------------------------------------------------------------------------------------------
 
-// Open the cart on the top button
+// Open the cart on the top button ----------------------
 cartBox.addEventListener('click', () => {
   // First verify the size of the screen ----- above 640px block and below flex
   updateCart()
@@ -49,7 +53,7 @@ cartBox.addEventListener('click', () => {
   }
 })
 
-// Close cart
+// Close cart ----------------------
 cancelCart.addEventListener('click', () => {
   // First verify the size of the screen ----- above 640px block and below flex
   if (window.innerWidth > 640) {
@@ -61,7 +65,7 @@ cancelCart.addEventListener('click', () => {
   }
 })
 
-// Open modal event
+// Open modal event ----------------------
 document.querySelectorAll('#menu-model').forEach((item) => {
   item.addEventListener('click', () => {
     // Get the id to identify the item in the fake json file
@@ -81,17 +85,17 @@ document.querySelectorAll('#menu-model').forEach((item) => {
   })
 })
 
-// Close modal button event
+// Close modal button event ----------------------
 cancelModal.addEventListener('click', () => closeModal())
 
-// Modal quantity plus event
+// Modal quantity plus event ----------------------
 quantityPlusModal.addEventListener('click', () => {
   // Increase the modal quantity and show on the button area
   modalCount++
   quantityModal.querySelector('span').innerHTML = modalCount
 })
 
-// Modal quantity minus event
+// Modal quantity minus event ----------------------
 quantityMinusModal.addEventListener('click', () => {
   // Check if the number is going to be less than zero
   if (modalCount > 1) {
@@ -100,7 +104,7 @@ quantityMinusModal.addEventListener('click', () => {
   }
 })
 
-// Add to cart procedure
+// Add to cart procedure ----------------------
 addCartModal.addEventListener('click', () => {
   // Checking if the item is already in the cart
   if (cartItems.find((item) => item.id === menu[modalCurrent].id) !== undefined) {
@@ -127,9 +131,24 @@ addCartModal.addEventListener('click', () => {
   closeModal()
   openCart()
 })
-// Functions -----------------------------------
 
-// Function to start the page
+// Events to choose whats gonna be show in the menu ----------------------
+
+// Display all
+all.addEventListener('click', () => startPage())
+
+// Display the breakfast options
+breakfast.addEventListener('click', show('breakfast'))
+
+// Display the lunch options
+lunch.addEventListener('click', show('lunch'))
+
+// Display the shakes options
+shakes.addEventListener('click', show('shakes'))
+
+// Functions ----------------------------------------------------------------------------------------------------------------------------------
+
+// Function to start the page ----------------------
 function startPage () {
   const menuInnerHTML = menu.map((item) => {
     // clone the model and configure it as it gets info of a fake API -> available.js
@@ -139,9 +158,9 @@ function startPage () {
     newItem.setAttribute('data-id', item.id)
     newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('img').src = item.img
-    newItem.querySelector('h1').innerHTML = item.title
     newItem.querySelector('h2 span').innerHTML = item.price
     newItem.querySelector('p').innerHTML = item.desc
+    newItem.classList.add('reveal-animation')
 
     // returns the entire html of the element, including the div itself that has all the elements in it
     return newItem.outerHTML
@@ -152,14 +171,14 @@ function startPage () {
   menuDisplay.innerHTML = display
 }
 
-// Function to close the modal
+// Function to close the modal ----------------------
 function closeModal () {
   modal.classList.remove('opacity-1')
   modal.classList.remove('flex')
   modal.classList.add('hidden')
 }
 
-// Function to open the modal
+// Function to open the modal ----------------------
 function openModal () {
   modal.classList.add('flex')
   modal.classList.remove('hidden')
@@ -170,7 +189,7 @@ function openModal () {
   }, 200)
 }
 
-// Function to open the cart
+// Function to open the cart ----------------------
 function openCart () {
   updateCart()
   // Check whats the size of teh screen to procedure
@@ -183,7 +202,7 @@ function openCart () {
   }
 }
 
-// Function to load the cart with the current items
+// Function to load the cart with the current items ----------------------
 function updateCart () {
   // Deleting the current information and adding the new one
   cartDisplay.innerHTML = ''
@@ -234,8 +253,37 @@ function updateCart () {
   cartArea.querySelector('#discount span').innerHTML = cartPriceDiscount
 }
 
-// Function to update the cart logo
+// Function to update the cart logo ----------------------
 function updateCartCount () {
   cartCount = parseInt(cartCount) + parseInt(modalCount)
   cartBox.querySelector('span').innerHTML = cartCount
+}
+
+// Function to show the correspondent selected category ----------------------
+function show (str) {
+  const category = str
+  return () => {
+    const menuInnerHTML = menu.map((item) => {
+      // Cheks if the product category is the right one selected
+      if (item.category.toLowerCase() === category.toLowerCase()) {
+        // clone the model and configure it as it gets info of a fake API -> available.js
+        const newItem = document.getElementById('menu-model').cloneNode(true)
+
+        // Setting the item for the html
+        newItem.setAttribute('data-id', item.id)
+        newItem.querySelector('h1').innerHTML = item.title
+        newItem.querySelector('img').src = item.img
+        newItem.querySelector('h2 span').innerHTML = item.price
+        newItem.querySelector('p').innerHTML = item.desc
+        newItem.classList.add('reveal-animation')
+
+        // returns the entire html of the element, including the div itself that has all the elements in it
+        return newItem.outerHTML
+      } else return ''
+    })
+
+    // Joins the array and adds it to the menuDisplay
+    const display = menuInnerHTML.join('')
+    menuDisplay.innerHTML = display
+  }
 }
