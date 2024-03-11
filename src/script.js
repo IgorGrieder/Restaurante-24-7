@@ -1,3 +1,4 @@
+import { menu } from './src/available.js'
 // Initial Data
 const menuDisplay = document.querySelector('#options-showcase')
 const cartBox = document.getElementById('cart-box')
